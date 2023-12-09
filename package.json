@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@nestjs-modules/mailer": "^1.9.1",
+    "express-session": "^1.17.3",
+    "nodemailer": "^6.9.7"
+  },
+  "devDependencies": {
+    "@types/express-session": "^1.17.10"
+  }
+}
