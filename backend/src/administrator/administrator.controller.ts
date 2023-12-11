@@ -189,10 +189,12 @@ export class AdministratorController {
   }))
 
   async addStudent(@Body() student:StudentDTO, @UploadedFile() file: Express.Multer.File):Promise<StudentEntity[]>{
+   console.log(student)
+   console.log(file)
     student.ProfilePicture = file.filename
     student.AdmissionDate = new Date()
 
-    console.log(student)
+    
     return await this.administratorService.addStudent(student);
   }
 
