@@ -179,6 +179,8 @@ export class AdministratorController {
   @Post("/addstudent")
   @UsePipes(new ValidationPipe())
   @UseInterceptors(FileInterceptor('myfile',{fileFilter:(req, file, cb)=>{
+    console.log("Hello")
+    console.log(file)
     if(file.originalname.match(/^.*\.(jpg|webp|png|jepg)$/)){
       cb(null, true)
     }else{
