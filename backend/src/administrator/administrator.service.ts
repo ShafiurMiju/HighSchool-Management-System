@@ -247,7 +247,7 @@ export class AdministratorService {
         Section:true
       },
       where:{
-        Class: className
+        Class: {ClassName: className},
       }
     })
   }

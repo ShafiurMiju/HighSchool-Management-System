@@ -255,7 +255,7 @@ const StudentEdit = () => {
         <div className="fixed inset-0 flex items-center justify-center">
           <div className="bg-gray-900 border p-4 rounded-md shadow-md flex flex-col pt-10 px-10 gap-5">
             <p className="text-white text-2xl">{successMessage}</p>
-            <button className="text-sm text-white my-2" onClick={() => setSuccessMessage('')}>
+            <button className="text-sm text-white my-2" onClick={() => router.push('/student')}>
               Close
             </button>
           </div>

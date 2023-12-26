@@ -219,8 +219,9 @@ export class AdministratorController {
   }
 
   //All Student list by class
-  @Get("/viewStudentByClass")
-  async viewStudentByClass(@Body() className:any){
+  @Get("/viewStudentByClass/:class")
+  async viewStudentByClass(@Param('class', ParseIntPipe) className:number){
+    console.log(className)
     return await this.administratorService.viewStudentByClass(className)
   }
 
