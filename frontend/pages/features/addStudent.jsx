@@ -416,7 +416,7 @@ const addStudent = () => {
         >
           <option value="">Select Class</option>
           {classList.map((classItem) => (
-            <option key={classItem.ID} value={classItem.ClassName}>
+            <option key={classItem.ID} value={classItem.ID}>
               {classItem.ClassName}
             </option>
           ))}
@@ -440,7 +440,7 @@ const addStudent = () => {
         >
           <option value="">Select Section</option>
           {sectionList.map((sectionItem) => (
-            <option key={sectionItem.ID} value={sectionItem.SectionName}>
+            <option key={sectionItem.ID} value={sectionItem.ID}>
               {sectionItem.SectionName}
             </option>
           ))}

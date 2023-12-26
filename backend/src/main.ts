@@ -12,10 +12,16 @@ async function bootstrap() {
       saveUninitialized: true,
       cookie: {
         secure: false, 
+        httpOnly: false,
+        maxAge: 300000
       }
     }),
   );
-  app.enableCors();
+  app.enableCors({
+    origin: true,
+    methods: 'GET, HEAD, PUT, PATCH, POST, DELETE, OPTIONS',
+    credentials: true
+  });
   
   await app.listen(3000);
 }

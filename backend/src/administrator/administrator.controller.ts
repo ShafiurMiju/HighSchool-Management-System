@@ -36,6 +36,7 @@ import { MessageDTO } from './dto/message.dto';
 import { MessageEntity } from './entities/message.entity';
 import { AcademicNoticeEntity } from './entities/academicNotice.entity';
 import { AcademicNoticeDTO } from './dto/notice.dto';
+import { error } from 'console';
 
 @Controller('administrator')
 export class AdministratorController {
@@ -61,15 +62,18 @@ export class AdministratorController {
   }
 
   //Administrator Login
-  @Get("/")
+  @Post("/")
   @UsePipes(new ValidationPipe())
   async login(@Session() session, @Body() loginData:AdministratorLoginDTO){
     const logdata = await this.administratorService.login(loginData)
+    console.log(loginData)
     if(logdata == "Login Success"){
       session.email = loginData.Email
-      return (session.email)
+      console.log(session)
+      return (session)
     }
     else{
+      console.error(error)
       throw new UnauthorizedException({ message: "User not found" });
     }
   }

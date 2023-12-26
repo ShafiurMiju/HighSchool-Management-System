@@ -1,9 +1,70 @@
-import React from "react";
+import React, {  useEffect, useState } from "react";
 import "flowbite";
 import logo from "../../public/logo.png";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { useAuth } from '../utils/authcontext';
+import axios from 'axios';
+
 
 const Navbar = () => {
+
+  // const {jsonData, setJsonData} = useState('');
+  // const router = useRouter();
+  // const {user, logout, checkUser} = useAuth();
+
+  
+
+  // const handleLogout = ()=>{
+  //   logout();
+  // }
+
+  // console.log(user)
+
+  const router = useRouter();
+  const { logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    router.push('/login');
+  };
+
+
+
+
+
+
+
+
+
+
+
+
+  //email show
+
+  const [jsonData, setJsonData] = useState(null);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  async function fetchData() {
+    try {
+      const response = await axios.get('http://localhost:3000/administrator/profile', {
+        withCredentials: true,
+      });
+      const jsonData = response.data;
+      console.log(jsonData);
+      setJsonData(jsonData);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+
+
+
+
   return (
     <>
       <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
@@ -69,46 +130,46 @@ const Navbar = () => {
                   id="dropdown-user"
                 >
                   <div className="px-4 py-3" role="none">
-                    <p
-                      className="text-sm text-gray-900 dark:text-white"
-                      role="none"
-                    >
-                      Neil Sims
-                    </p>
-                    <p
-                      className="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
-                      role="none"
-                    >
-                      neil.sims@flowbite.com
-                    </p>
+                    <div>
+                      {jsonData ? (
+                      <div>
+                        <p className="text-sm text-gray-900 dark:text-white" role="none">{jsonData.FirstName+" "+jsonData.LastName}</p>
+                      </div>
+
+                      ):(
+                      <p className="text-sm text-gray-900 dark:text-white" role="none">Name</p>
+                      )}
+                    </div>
+                    <div>
+                      {jsonData ? (
+                      <div>
+                        <p className="text-sm text-gray-900 dark:text-white" role="none">{jsonData.Email}</p>
+                      </div>
+
+                      ):(
+                      <p className="text-sm text-gray-900 dark:text-white" role="none">Email</p>
+                      )}
+                    </div>
                   </div>
                   <ul className="py-1" role="none">
                     <li>
                       <a
-                        href="#"
+                        href="/profile"
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                         role="menuitem"
                       >
-                        Dashboard
+                        Profile
                       </a>
                     </li>
+                   
                     <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                      <button
+                        className="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                         role="menuitem"
-                      >
-                        Earnings
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                        role="menuitem"
+                        onClick={handleLogout}
                       >
                         Sign out
-                      </a>
+                      </button>
                     </li>
                   </ul>
                 </div>
