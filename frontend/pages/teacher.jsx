@@ -15,7 +15,7 @@ const student = () => {
   async function fetchData() {
     try {
       const response = await axios.get(
-        "http://localhost:3000/administrator/viewstudent"
+        "http://localhost:3000/administrator/viewteacher"
       );
       const jsonData = response.data;
       setJsonData(jsonData);
@@ -32,7 +32,7 @@ const student = () => {
           <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-16">
             <div className="font-bold flex justify-between items-center px-6 py-4 mb-5 text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400">
               <a href="/"><TiArrowLeftThick className="text-4xl cursor-pointer" /></a>
-              <div className="text-2xl">STUDENT</div>
+              <div className="text-2xl">TEACHER</div>
               <a href="/admission"><FaPlusCircle className="text-3xl cursor-pointer" /></a>
             </div>
 
@@ -213,12 +213,6 @@ const student = () => {
                         Name
                       </th>
                       <th scope="col" className="px-6 py-3">
-                        Class
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                        Section
-                      </th>
-                      <th scope="col" className="px-6 py-3">
                         Email
                       </th>
                       <th scope="col" className="px-6 py-3">
@@ -267,12 +261,7 @@ const student = () => {
                               >
                                 {item.FirstName + " " + item.LastName}
                               </th>
-                              <td className="px-6 py-4">
-                                {item.Class.ClassName}
-                              </td>
-                              <td className="px-6 py-4">
-                                {item.Section.SectionName}
-                              </td>
+
                               <td className="px-6 py-4">{item.Email}</td>
                               <td className="px-6 py-4">
                                 {item.ContactNumber}
@@ -288,7 +277,7 @@ const student = () => {
                                 </a>
 
                                 <a
-                                  href={`/student-edit/${item.ID}`}
+                                  href={`/student/${item.ID}`}
                                   className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                                 >
                                   Edit

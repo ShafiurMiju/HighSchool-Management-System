@@ -282,6 +282,11 @@ export class AdministratorService {
     return this.StudentRepository.update(id, updateData)
   }
 
+  //Delete Section
+  async deleteStudentbyid(Id:number){
+    return await this.StudentRepository.delete(Id)
+  }
+
 
   //Add Department
   async addDepartment(department:any):Promise<DepartmentEntity[]>{

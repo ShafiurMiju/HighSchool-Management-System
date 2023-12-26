@@ -259,6 +259,12 @@ export class AdministratorController {
     return await this.administratorService.updatePhoto(id, updateData)
   }
 
+  //Delete Student
+  @Delete("/deleteStudentbyid/:Id")
+  async deleteStudentbyid(@Param("Id") Id:number){
+    return await this.administratorService.deleteStudentbyid(Id)
+  }
+
 
   //Add Department
   @Post("/addDepartment")
@@ -421,6 +427,12 @@ export class AdministratorController {
   async viewNotice(@Session() session){
     return await this.administratorService.viewNotice(session)
   }
+
+  //get image
+  @Get('/getimage/:name')
+    getImages(@Param('name') name, @Res() res) {
+        res.sendFile(name, { root: './uploadFile' })
+    }
 
   //
   @Get('/signout')

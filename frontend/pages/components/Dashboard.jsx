@@ -125,7 +125,8 @@ const Dashboard = (
                 </div>
               </div>
               <hr class="h-px bg-gray-900 border-0 dark:bg-gray-700" />
-              <button
+              <a
+                href="/teacher"
                 // onClick={onTeacherClick}
                 type="button"
                 className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -146,7 +147,7 @@ const Dashboard = (
                     d="M1 5h12m0 0L9 1m4 4L9 9"
                   />
                 </svg>
-              </button>
+              </a>
             </div>
 
             {/* Staff */}
@@ -167,7 +168,8 @@ const Dashboard = (
                 </div>
               </div>
               <hr class="h-px bg-gray-900 border-0 dark:bg-gray-700" />
-              <button
+              <a
+                href="/staff"
                 // onClick={onStaffClick}
                 type="button"
                 className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -188,7 +190,7 @@ const Dashboard = (
                     d="M1 5h12m0 0L9 1m4 4L9 9"
                   />
                 </svg>
-              </button>
+              </a>
             </div>
           </div>
         </div>
