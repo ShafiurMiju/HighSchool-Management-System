@@ -35,12 +35,10 @@ const Notice = () => {
   const validateForm = () => {
     const errors = {};
 
-    // Validate title
     if (!formData.AcademicNoticeTitle.trim()) {
       errors.AcademicNoticeTitle = 'Title is required';
     }
 
-    // Validate message
     if (!formData.AcademicNoticeText.trim()) {
       errors.AcademicNoticeText = 'Message is required';
     }
@@ -52,14 +50,12 @@ const Notice = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate the form
     if (!validateForm()) {
       return;
     }
 
     console.log(formData)
 
-    // Perform form submission logic using Axios
     try {
       const response = await axios.post("http://localhost:3000/administrator/notice", formData,{ 
         withCredentials: true
@@ -78,12 +74,11 @@ const Notice = () => {
       console.error('Error submitting notice:', error);
       setSubmitStatus('fail');
     } finally {
-      // Show the popup message after a delay
       setShowPopup(true);
       setTimeout(() => {
         setShowPopup(false);
         setSubmitStatus('');
-      }, 3000); // Adjust the delay as needed
+      }, 3000);
     }
   };
 

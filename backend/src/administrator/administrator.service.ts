@@ -224,6 +224,20 @@ export class AdministratorService {
     })
   }
 
+  //view single student
+  async viewSingleStudent(studentid){
+    console.log(studentid)
+    return await this.StudentRepository.find({
+      relations:{
+        Class:true,
+        Section:true
+      },
+      where:{
+        ID: studentid
+      }
+    })
+  }
+
 
   //All Student list View by Class
   async viewStudentByClass(className:any){

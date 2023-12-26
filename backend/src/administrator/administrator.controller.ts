@@ -79,7 +79,7 @@ export class AdministratorController {
   }
 
   //Forget password
-  @Get("/forgetpass")
+  @Post("/forgetpass")
   async forgetPass(@Session() session, @Body() email, @Body() otp){
     var ex = await this.administratorService.forgetPass(email);
 
@@ -104,13 +104,15 @@ export class AdministratorController {
     }
   }
 
-  @Get("/forgetpassverify")
+  @Post("/forgetpassverify")
   async forgetpassverify(@Session() session, @Body() otp){
       var genOTP = session.otp
       if(genOTP == otp.otp){
-        return "correct otp"
+        console.log("Otp")
+        return true
       }else{
-        return "wrong otp"
+        console.log("not Otp")
+        return false
       }
   }
 
@@ -120,7 +122,7 @@ export class AdministratorController {
       return await this.administratorService.forgetPassChange(session.temp, newpass)
     }
     else{
-      return "password not match"
+      return false
     }
     
   }
@@ -208,6 +210,12 @@ export class AdministratorController {
   @Get("/viewStudent")
   async viewStudent(){
     return await this.administratorService.viewStudent()
+  }
+
+  //view single student
+  @Get("/viewSingleStudent/:studentid")
+  async viewSingleStudent(@Param('studentid', ParseIntPipe) studentid: number){
+    return await this.administratorService.viewSingleStudent(studentid)
   }
 
   //All Student list by class

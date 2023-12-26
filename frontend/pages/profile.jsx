@@ -47,7 +47,6 @@ export default function AllAdmin() {
                 </div>
               </div>
               <div>
-                {/* Add your profile image component here */}
                 <img src="logo.png" alt="Profile" className="rounded-full w-24 h-24" />
               </div>
             </div>

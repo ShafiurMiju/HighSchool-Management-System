@@ -278,14 +278,16 @@ const student = () => {
                                 {item.ContactNumber}
                               </td>
                               <td className="px-6 py-4">{item.Gender}</td>
-                              <td className="px-6 py-4">
+                              <td className="px-6 py-4 flex gap-5">
+                              
                                 <a
-                                  href="#"
+                                  href={`/student/${item.ID}`}
                                   className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                                 >
                                   Edit
                                 </a>
                               </td>
+                              
                             </tr>
                           ))}
                         </tbody>
@@ -304,7 +306,14 @@ const student = () => {
                             <td className="px-6 py-4">
                               {item.AcademicNoticeTitle}
                             </td>
-                            <td className="px-6 py-4">
+                            
+                            <td className="px-6 py-4 flex gap-5">
+                              <a
+                                href="#"
+                                className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                              >
+                                View
+                              </a>
                               <a
                                 href="#"
                                 className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
